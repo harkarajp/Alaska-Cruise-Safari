@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cousins Safar: Encore to Alaska!</title>
+<style>
+:root {
+--bg-festive: #FFF9E6;
+--marigold: #FF9933;
+--royal-blue: #1E3A8A;
+--emerald: #138808;
+--card-bg: #FFFFFF;
+--text-dark: #2C3E50;
+--text-muted: #6B7280;
+--mandala-color: rgba(255, 153, 51, 0.05);
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+background-color: var(--bg-festive);
+color: var(--text-dark);
+padding-bottom: 40px;
+/* Subtitle floral accents simulation using repeating patterns */
+background-image: radial-gradient(circle at 50% 50%, var(--mandala-color) 20%, transparent 20%),
+radial-gradient(circle at 0 0, var(--mandala-color) 40%, transparent 40%);
+background-size: 60px 60px;
+}
+
+/* Header Area */
+header {
+background: linear-gradient(135deg, var(--marigold), #FF5722);
+color: white;
+padding: 30px 20px;
+text-align: center;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 25px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+position: relative;
+overflow: hidden;
+}
+
+header h1 {
+font-size: 1.8rem;
+font-weight: 800;
+letter-spacing: 0.5px;
+margin-bottom: 5px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+header p {
+font-size: 0.95rem;
+opacity: 0.9;
+font-weight: 500;
+}
+
+/* Navigation Tab Bar for iPhone Quick-Jump */
+.nav-container {
+display: flex;
+overflow-x: auto;
+padding: 15px 10px;
+gap: 10px;
+scroll-behavior: smooth;
+-webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+display: none;
+}
+
+.nav-chip {
+background-color: var(--card-bg);
+color: var(--royal-blue);
+padding: 8px 16px;
+border-radius: 20px;
+text-decoration: none;
+font-size: 0.85rem;
+font-weight: 700;
+white-space: nowrap;
+box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+border: 1px solid rgba(255, 153, 51, 0.2);
+}
+
+/* Main Itinerary Timeline Container */
+.itinerary {
+padding: 0 15px;
+}
+
+/* Port Card Styles */
+.card {
+background-color: var(--card-bg);
+border-radius: 20px;
+padding: 20px;
+margin-bottom: 25px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+border-left: 6px solid var(--marigold);
+scroll-margin-top: 15px;
+}
+
+.card.sea-day {
+border-left-color: var(--royal-blue);
+}
+
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+border-bottom: 1px dashed #E5E7EB;
+padding-bottom: 12px;
+margin-bottom: 15px;
+}
+
+.date-badge {
+color: var(--marigold);
+font-weight: 800;
+font-size: 0.85rem;
+text-transform: uppercase;
+}
+
+.card.sea-day .date-badge {
+color: var(--royal-blue);
+}
+
+.port-name {
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--royal-blue);
+margin-top: 2px;
+}
+
+.time-status {
+font-size: 0.8rem;
+background-color: #F3F4F6;
+padding: 4px 10px;
+border-radius: 12px;
+font-weight: 600;
+color: var(--text-dark);
+}
+
+/* Weather Sub-block */
+.weather-box {
+background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+border-radius: 12px;
+padding: 12px 15px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 15px;
+}
+
+.weather-info {
+display: flex;
+flex-direction: column;
+}
+
+.weather-temp {
+font-size: 1.5rem;
+font-weight: 800;
+color: var(--royal-blue);
+}
+
+.weather-desc {
+font-size: 0.85rem;
+color: var(--text-muted);
+font-weight: 500;
+}
+
+/* Section Layouts */
+.section-title {
+font-size: 0.9rem;
+font-weight: 700;
+color: var(--emerald);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.section-content {
+font-size: 0.92rem;
+line-height: 1.45;
+color: var(--text-dark);
+margin-bottom: 15px;
+}
+
+/* Bullets */
+.spot-list {
+list-style: none;
+padding-left: 0;
+}
+
+.spot-list li {
+position: relative;
+padding-left: 18px;
+margin-bottom: 6px;
+font-size: 0.92rem;
+}
+
+.spot-list li::before {
+content: "•";
+color: var(--marigold);
+font-weight: bold;
+font-size: 1.2rem;
+position: absolute;
+left: 2px;
+top: -2px;
+}
+
+/* Clothing / Packing Section */
+.clothing-box {
+background-color: #FFFBEB;
+border: 1px solid #FDE68A;
+border-radius: 12px;
+padding: 12px;
+display: flex;
+gap: 10px;
+}
+
+.clothing-icon {
+font-size: 1.5rem;
+display: flex;
+align-items: center;
+}
+
+.clothing-text {
+font-size: 0.88rem;
+color: #92400E;
+line-height: 1.4;
+}
+
+/* Footer styling */
+footer {
+text-align: center;
+padding: 20px;
+font-size: 0.8rem;
+color: var(--text-muted);
+font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Cousins Cruise Safar 🚢</h1>
+<p>Norwegian Encore • May 31 – June 7, 2026</p>
+</header>
+
+<!-- Horizontal Jump Menu for Quick iPhone Tapping -->
+<div class="nav-container">
+<a href="#day1" class="nav-chip">Day 1: Seattle</a>
+<a href="#day2" class="nav-chip">Day 2: Sea</a>
+<a href="#day3" class="nav-chip">Day 3: Juneau</a>
+<a href="#day4" class="nav-chip">Day 4: Skagway</a>
+<a href="#day5" class="nav-chip">Day 5: Glacier Bay</a>
+<a href="#day6" class="nav-chip">Day 6: Ketchikan</a>
+<a href="#day7" class="nav-chip">Day 7: Victoria</a>
+</div>
+
+<main class="itinerary">
+
+<!-- DAY 1 -->
+<div class="card" id="day1">
+<div class="card-header">
+<div>
+<div class="date-badge">Sunday, May 31</div>
+<div class="port-name">Seattle, WA</div>
+</div>
+<div class="time-status">Departs 4:00 PM</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">64°F / 18°C</span>
+<span class="weather-desc">Partly Sunny & Mild</span>
+</div>
+<div style="font-size: 2rem;">🌤️</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">The Emerald City! Known for its tech giants, coffee culture, and stunning views of Mount Rainier. We sail straight out of Pier 66.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>Space Needle & Chihuly Gardens:</strong> Unmissable panoramic views right before boarding.</li>
+<li><strong>Pike Place Market:</strong> Catching the famous flying fish throwing action.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">🧥</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Comfortable walking sneakers, jeans, and a light jacket or cardigan. Keep a stylish shawl or pashmina in your daybag for sail-away breeze!</div>
+</div>
+</div>
+
+<!-- DAY 2 -->
+<div class="card sea-day" id="day2">
+<div class="card-header">
+<div>
+<div class="date-badge">Monday, June 1</div>
+<div class="port-name">At Sea (Inside Passage)</div>
+</div>
+<div class="time-status">Cruising</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">55°F / 13°C</span>
+<span class="weather-desc">Breezy & Cool Ocean Air</span>
+</div>
+<div style="font-size: 2rem;">🌊</div>
+</div>
+
+<div class="section-title">✨ Ship Fun Facts</div>
+<div class="section-content">The Encore boasts a massive 1,100-foot electric go-kart race track overhanging the sea, alongside incredible dining lounges perfect for a massive cousin hangout.</div>
+
+<div class="section-title">📍 Cousin Action Items</div>
+<ul class="spot-list">
+<li><strong>Observation Lounge Meetup:</strong> Claim a panoramic window corner together for wildlife tracking.</li>
+<li><strong>Cousins Track Race:</strong> Book slots at the Encore Speedway to see who wins the title.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">👕</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Cozy casual! Hoodies, track pants, or warm sweaters. If dressing up for evening dinner, a smart sweater or formal Kurti looks vibrant against the deep blue sea background.</div>
+</div>
+</div>
+
+<!-- DAY 3 -->
+<div class="card" id="day3">
+<div class="card-header">
+<div>
+<div class="date-badge">Tuesday, June 2</div>
+<div class="port-name">Juneau, Alaska</div>
+</div>
+<div class="time-status">2:30 PM – 10:00 PM</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">54°F / 12°C</span>
+<span class="weather-desc">Showers Likely</span>
+</div>
+<div style="font-size: 2rem;">🌧️</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">Alaska's isolated capital city. It cannot be reached by roads—only by air or water! It sits right at the base of the massive Juneau Icefield.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>Mendenhall Glacier:</strong> Stand feet away from a stunning massive blue ice flow.</li>
+<li><strong>Gold Creek Salmon Bake:</strong> Historic gold-rush style dining experience out in the rainforest.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">☔</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Rainwear day! Waterproof outer shell jacket, waterproof boots/shoes, and warm layers underneath. Juneau is notoriously wet, so leave the nice canvas shoes on the ship.</div>
+</div>
+</div>
+
+<!-- DAY 4 -->
+<div class="card" id="day4">
+<div class="card-header">
+<div>
+<div class="date-badge">Wednesday, June 3</div>
+<div class="port-name">Skagway, Alaska</div>
+</div>
+<div class="time-status">6:00 AM – 8:15 PM</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">57°F / 14°C</span>
+<span class="weather-desc">Partly Cloudy & Crisp</span>
+</div>
+<div style="font-size: 2rem;">⛅</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">The heart of the 1898 Klondike Gold Rush. The entire downtown district looks like a preserved 19th-century wild-west frontier outpost.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>White Pass & Yukon Route Railroad:</strong> Ride vintage train coaches climbing up rugged mountain cliffs.</li>
+<li><strong>Klondike Highway Viewpoints:</strong> Stunning turquoise alpine lakes and sweeping valleys.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">🧣</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> True modular layering. A warm beanie, thermal inner-shirt, fleece sweater, and windbreaker. The mountain passes on the train ride get significantly colder!</div>
+</div>
+</div>
+
+<!-- DAY 5 -->
+<div class="card sea-day" id="day5">
+<div class="card-header">
+<div>
+<div class="date-badge">Thursday, June 4</div>
+<div class="port-name">Glacier Bay National Park</div>
+</div>
+<div class="time-status">Scenic Cruising</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">48°F / 9°C</span>
+<span class="weather-desc">Chilly Glacial Winds</span>
+</div>
+<div style="font-size: 2rem;">❄️</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">A UNESCO World Heritage site containing spectacular tidewater glaciers. The ship stays quiet to listen for "white thunder"—the sound of massive icebergs calving into the sea.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>Margerie Glacier:</strong> The main spectacular display point where the ship rotates 360 degrees.</li>
+<li><strong>Wildlife Spotting:</strong> Watch the waters closely for sea otters, harbor seals, and humpback whales.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">🥶</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Coldest day of the trip! Bring out your heavy winter jacket, gloves, scarf, and double up on socks if you plan to stand out on the open observation decks.</div>
+</div>
+</div>
+
+<!-- DAY 6 -->
+<div class="card" id="day6">
+<div class="card-header">
+<div>
+<div class="date-badge">Friday, June 5</div>
+<div class="port-name">Ketchikan (Ward Cove), AK</div>
+</div>
+<div class="time-status">7:00 AM – 1:15 PM</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">56°F / 13°C</span>
+<span class="weather-desc">Misty & Overcast</span>
+</div>
+<div style="font-size: 2rem;">☁️</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">The Salmon Capital of the World and home to the world's largest collection of standing Native American totem poles. The Encore docks at historic Ward Cove.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>Creek Street:</strong> Historic boardwalk built on stilts over a rushing salmon stream.</li>
+<li><strong>Totem Bight State Park:</strong> Beautiful hand-carved totems set against the forest.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">🧥</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Comfortable walking layers with a water-resistant jacket. Ketchikan is a rainforest environment, so carrying a compact umbrella is a smart backup plan.</div>
+</div>
+</div>
+
+<!-- DAY 7 -->
+<div class="card" id="day7">
+<div class="card-header">
+<div>
+<div class="date-badge">Saturday, June 6</div>
+<div class="port-name">Victoria, BC, Canada</div>
+</div>
+<div class="time-status">8:00 PM – 11:59 PM</div>
+</div>
+
+<div class="weather-box">
+<div class="weather-info">
+<span class="weather-temp">60°F / 16°C</span>
+<span class="weather-desc">Clear & Cool Evening</span>
+</div>
+<div style="font-size: 2rem;">🌙</div>
+</div>
+
+<div class="section-title">✨ Port Lore & Facts</div>
+<div class="section-content">Located on Vancouver Island, Victoria is incredibly famous for its classic British colonial architecture, gorgeous manicured flower gardens, and old-world charm.</div>
+
+<div class="section-title">📍 Top Spots to See</div>
+<ul class="spot-list">
+<li><strong>The Inner Harbour:</strong> The lit-up night silhouette of the Parliament Buildings is magical.</li>
+<li><strong>Empress Hotel:</strong> A breathtaking historic grand hotel right on the harbor water.</li>
+</ul>
+
+<div class="clothing-box">
+<div class="clothing-icon">✨</div>
+<div class="clothing-text"><strong>Outfit Check:</strong> Elegant evening casual! Great night for a smart blazer or a beautiful warm bright dupatta/shawl over a jacket as we walk the illuminated city streets.</div>
+</div>
+</div>
+
+</main>
+
+<footer>
+<p>Chalo Alaska! • Created with ❤️ for the Family</p>
+</footer>
+
+</body>
+</html>
